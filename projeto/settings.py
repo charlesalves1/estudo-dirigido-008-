@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rlbn$p!od^b&zw^)9ycd+lrl!_xttk&@)ghbz7mk02-ufu7-5%'
+SECRET_KEY = 'django-insecure-t+3hqybz_j$x+^1y3(+d5521+ips-u$c*8h!o2e!#9t&wu_i-z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'rest_framework',
-
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +123,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'PATRI-TECH API',
+    'DESCRIPTION': 'Documentação da API de inventário de bens',
+    'VERSION': '1.0.0',
+}
