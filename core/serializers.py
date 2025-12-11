@@ -1,6 +1,6 @@
 # ...existing code...
 from rest_framework import serializers
-from .models import Unidade, Sala, Status, Bem
+from .models import Unidade, Sala, Status, Bem , Categoria
 
 class UnidadeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,4 +21,8 @@ class BemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bem
         fields = "__all__"
-# ...existing code...
+
+class CategoriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = "__all__"

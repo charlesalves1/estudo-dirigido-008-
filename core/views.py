@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 from rest_framework import generics
-from .models import Unidade, Sala, Status, Bem
+from .models import Unidade, Sala, Status, Bem , Categoria
 from .serializers import (
     UnidadeSerializer,
     SalaSerializer,
     StatusSerializer,
-    BemSerializer
+    BemSerializer,
+    CategoriaSerializer
 )
 def home(request):
     return HttpResponse("Bem-vindo ao sistema de inventário de bens!")
@@ -35,3 +36,7 @@ class BemListCreate(generics.ListCreateAPIView):
 class BemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bem.objects.all()
     serializer_class = BemSerializer
+    
+class CategoriaListCreate(generics.ListCreateAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer  
