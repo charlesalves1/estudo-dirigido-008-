@@ -1,0 +1,966 @@
+openapi: 3.0.3
+info:
+  title: PATRI-TECH API
+  version: 1.0.0
+  description: API do sistema de inventário patrimonial
+paths:
+  /api/bens/:
+    get:
+      operationId: api_bens_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bem'
+          description: ''
+    post:
+      operationId: api_bens_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Bem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Bem'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bem'
+          description: ''
+  /api/bens/{id}/:
+    get:
+      operationId: api_bens_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Bem.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bem'
+          description: ''
+    put:
+      operationId: api_bens_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Bem.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Bem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Bem'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bem'
+          description: ''
+    patch:
+      operationId: api_bens_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Bem.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBem'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bem'
+          description: ''
+    delete:
+      operationId: api_bens_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Bem.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/categorias/:
+    get:
+      operationId: api_categorias_list
+      summary: Lista e cria Categoria
+      tags:
+      - Categoria
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categoria'
+          description: ''
+    post:
+      operationId: api_categorias_create
+      summary: Lista e cria Categoria
+      tags:
+      - Categoria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+  /api/categorias/{id}/:
+    get:
+      operationId: api_categorias_retrieve
+      summary: Lista e cria Categoria
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Categoria.
+        required: true
+      tags:
+      - Categoria
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+    put:
+      operationId: api_categorias_update
+      summary: Lista e cria Categoria
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Categoria.
+        required: true
+      tags:
+      - Categoria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+    patch:
+      operationId: api_categorias_partial_update
+      summary: Lista e cria Categoria
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Categoria.
+        required: true
+      tags:
+      - Categoria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoria'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoria'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoria'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+    delete:
+      operationId: api_categorias_destroy
+      summary: Lista e cria Categoria
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Categoria.
+        required: true
+      tags:
+      - Categoria
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/login/:
+    post:
+      operationId: api_login_create
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/salas/:
+    get:
+      operationId: api_salas_list
+      summary: Lista e cria Sala
+      tags:
+      - Sala
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sala'
+          description: ''
+    post:
+      operationId: api_salas_create
+      summary: Lista e cria Sala
+      tags:
+      - Sala
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sala'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sala'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sala'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sala'
+          description: ''
+  /api/salas/{id}/:
+    get:
+      operationId: api_salas_retrieve
+      summary: Lista e cria Sala
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Sala.
+        required: true
+      tags:
+      - Sala
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sala'
+          description: ''
+    put:
+      operationId: api_salas_update
+      summary: Lista e cria Sala
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Sala.
+        required: true
+      tags:
+      - Sala
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sala'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sala'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sala'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sala'
+          description: ''
+    patch:
+      operationId: api_salas_partial_update
+      summary: Lista e cria Sala
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Sala.
+        required: true
+      tags:
+      - Sala
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSala'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSala'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSala'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sala'
+          description: ''
+    delete:
+      operationId: api_salas_destroy
+      summary: Lista e cria Sala
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Sala.
+        required: true
+      tags:
+      - Sala
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/status/:
+    get:
+      operationId: api_status_list
+      summary: Lista e cria Status
+      tags:
+      - Status
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status'
+          description: ''
+    post:
+      operationId: api_status_create
+      summary: Lista e cria Status
+      tags:
+      - Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Status'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Status'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Status'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: ''
+  /api/status/{id}/:
+    get:
+      operationId: api_status_retrieve
+      summary: Lista e cria Status
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Status.
+        required: true
+      tags:
+      - Status
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: ''
+    put:
+      operationId: api_status_update
+      summary: Lista e cria Status
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Status.
+        required: true
+      tags:
+      - Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Status'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Status'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Status'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: ''
+    patch:
+      operationId: api_status_partial_update
+      summary: Lista e cria Status
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Status.
+        required: true
+      tags:
+      - Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStatus'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStatus'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStatus'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: ''
+    delete:
+      operationId: api_status_destroy
+      summary: Lista e cria Status
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Status.
+        required: true
+      tags:
+      - Status
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/unidades/:
+    get:
+      operationId: api_unidades_list
+      summary: Lista e cria Unidade
+      tags:
+      - Unidade
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unidade'
+          description: ''
+    post:
+      operationId: api_unidades_create
+      summary: Lista e cria Unidade
+      tags:
+      - Unidade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Unidade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Unidade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Unidade'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unidade'
+          description: ''
+  /api/unidades/{id}/:
+    get:
+      operationId: api_unidades_retrieve
+      summary: Lista e cria Unidade
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Unidade.
+        required: true
+      tags:
+      - Unidade
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unidade'
+          description: ''
+    put:
+      operationId: api_unidades_update
+      summary: Lista e cria Unidade
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Unidade.
+        required: true
+      tags:
+      - Unidade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Unidade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Unidade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Unidade'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unidade'
+          description: ''
+    patch:
+      operationId: api_unidades_partial_update
+      summary: Lista e cria Unidade
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Unidade.
+        required: true
+      tags:
+      - Unidade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidade'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unidade'
+          description: ''
+    delete:
+      operationId: api_unidades_destroy
+      summary: Lista e cria Unidade
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Um valor inteiro único que identifica este Unidade.
+        required: true
+      tags:
+      - Unidade
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Bem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 200
+        tombo:
+          type: string
+          nullable: true
+          maxLength: 50
+        unidade:
+          type: integer
+        sala:
+          type: integer
+          nullable: true
+        status:
+          type: integer
+          nullable: true
+        categoria:
+          type: integer
+        criado_em:
+          type: string
+          format: date-time
+          readOnly: true
+        atualizado_em:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - atualizado_em
+      - categoria
+      - criado_em
+      - id
+      - nome
+      - unidade
+    Categoria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+      required:
+      - id
+      - nome
+    PatchedBem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 200
+        tombo:
+          type: string
+          nullable: true
+          maxLength: 50
+        unidade:
+          type: integer
+        sala:
+          type: integer
+          nullable: true
+        status:
+          type: integer
+          nullable: true
+        categoria:
+          type: integer
+        criado_em:
+          type: string
+          format: date-time
+          readOnly: true
+        atualizado_em:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedCategoria:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+    PatchedSala:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+        unidade:
+          type: integer
+    PatchedStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+        descricao:
+          type: string
+    PatchedUnidade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+        endereco:
+          type: string
+          maxLength: 200
+    Sala:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+        unidade:
+          type: integer
+      required:
+      - id
+      - nome
+      - unidade
+    Status:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+        descricao:
+          type: string
+      required:
+      - id
+      - nome
+    Unidade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 100
+        endereco:
+          type: string
+          maxLength: 200
+      required:
+      - endereco
+      - id
+      - nome
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
